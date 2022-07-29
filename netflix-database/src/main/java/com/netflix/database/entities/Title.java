@@ -11,7 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+
+import com.netflix.database.validation.MaxCurrentYear;
 
 @Entity
 public class Title {
@@ -21,13 +26,28 @@ public class Title {
 	private String id;
 	
 	@Column(unique=true)
+	@NotEmpty
 	private String name;
 	private String date_added;
-	private String release_year;
-	private String rating;
 	private String duration;
 	private String description;
+	
+	@Column(unique=true)
+	@NotEmpty
+	@Min(0)
 	private double user_rating;
+	
+	@Column(unique=true)
+	@NotEmpty
+	@Min(1900)
+	@MaxCurrentYear
+	private String release_year;
+	
+	@Column(unique=true)
+	@NotEmpty
+	@Min(0)
+	@Max(10)
+	private String rating;
 	
 	@ManyToMany
 	Set<Actor> actor;

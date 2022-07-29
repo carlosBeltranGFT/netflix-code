@@ -51,5 +51,10 @@ public class TitleService {
     	titleRepository.deleteById(Id);
 
     }
+    
+    public List bestTitles()
+    {
+    	return titleRepository.bestTitles();
+    }
 	
 }

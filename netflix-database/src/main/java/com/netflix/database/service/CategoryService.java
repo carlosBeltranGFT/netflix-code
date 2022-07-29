@@ -28,10 +28,7 @@ public class CategoryService {
     {
         return categoryRepository.findAll();
     }
-    public Category getCategoryById(int id)
-    {
-        return categoryRepository.findById(id);
-    }
+
 
     public Category save(Category newCategory)
     {
@@ -54,6 +51,11 @@ public class CategoryService {
     {
     	categoryRepository.deleteById(Id);
 
+    }
+
+    
+    public Category findCategoryById(int id) {
+    	return categoryRepository.findCategoryById(id);
     }
 	
 }

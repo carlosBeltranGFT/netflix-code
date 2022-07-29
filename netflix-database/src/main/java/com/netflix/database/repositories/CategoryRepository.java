@@ -9,5 +9,5 @@ import com.netflix.database.entities.Category;
 
 public interface CategoryRepository extends JpaRepository<Category, Integer>{
 	Category findByName(String name); 
-	Category findById(@Param("id") int id);
+	Category findCategoryById(@Param("id") int id);
 }
