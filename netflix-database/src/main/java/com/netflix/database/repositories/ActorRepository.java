@@ -11,4 +11,5 @@ import com.netflix.database.entities.Actor;
 
 public interface ActorRepository extends JpaRepository<Actor, Integer>{
 	Actor findByName(String name); 
+	Actor findById(@Param("id") int id);
 }
