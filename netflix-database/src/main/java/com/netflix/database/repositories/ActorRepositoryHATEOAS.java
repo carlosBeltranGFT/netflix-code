@@ -8,9 +8,8 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.netflix.database.entities.Actor;
 
-@RepositoryRestResource(collectionResourceRel = "actor", path = "actors")
+@RepositoryRestResource(collectionResourceRel="actor", path="actors")
 public interface ActorRepositoryHATEOAS extends JpaRepository<Actor, Integer>{
 	List<Actor> findByName(@Param("name") String name);
 	Actor findById(@Param("id") int id);
-	Actor deleteById(@Param("id") int id);
 }

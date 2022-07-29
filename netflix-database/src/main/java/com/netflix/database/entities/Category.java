@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotEmpty;
 
@@ -24,6 +25,8 @@ public class Category {
 	private String name;
 	
 	
+	
+	
 	public Category() {
 		super();
 	}
@@ -32,6 +35,7 @@ public class Category {
 		super();
 		this.name = name;
 	}
+
 
 
 	public Integer getId() {

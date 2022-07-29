@@ -8,8 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.NaturalId;
@@ -22,9 +23,7 @@ public class Actor{
 	private Integer id;
 	
 
-	@NotBlank(message = "name is mandatory")
     private String name;
-    
 	
     public Actor() {
 		super();
@@ -36,7 +35,6 @@ public class Actor{
 		super();
 		this.name = name;
 	}
-
 
 
 
@@ -59,8 +57,6 @@ public class Actor{
     public void setName(String name){
         this.name=name;
     }
-
-    
 
     
 }

@@ -11,7 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.netflix.database.validation.MaxCurrentYear;
 
 @Entity
 public class Title {
@@ -23,19 +28,29 @@ public class Title {
 	@Column(unique=true)
 	private String name;
 	private String date_added;
+	
+	@Min(1900)
+	@MaxCurrentYear
 	private String release_year;
+	
 	private String rating;
 	private String duration;
 	private String description;
-	private double user_rating;
+	@Min(0)
+	@Max(10)
+	private double userRating;
 	
+
 	@ManyToMany
+	@JsonIgnore
 	Set<Actor> actor;
 	
 	@ManyToMany
+	@JsonIgnore
 	Set<Director> director;
 	
 	@ManyToMany
+	@JsonIgnore
 	Set<Category> category;
 
 	public Title() {
@@ -53,14 +68,14 @@ public class Title {
 		this.rating = rating;
 		this.duration = duration;
 		this.description = description;
-		this.user_rating = user_rating;
+		this.userRating = user_rating;
 		this.actor = actorId;
 		this.director = directorId;
 		this.category = categoryId;
 	}
 
 
-
+	@JsonIgnore
 	public Set<Actor> getActorId() {
 		return actor;
 	}
@@ -70,7 +85,7 @@ public class Title {
 	}
 
 
-
+	@JsonIgnore
 	public Set<Director> getDirectorId() {
 		return director;
 	}
@@ -82,7 +97,7 @@ public class Title {
 	}
 
 
-
+	@JsonIgnore
 	public Set<Category> getCategoryId() {
 		return category;
 	}
@@ -152,18 +167,18 @@ public class Title {
 	}
 
 	public double getUser_rating() {
-		return user_rating;
+		return userRating;
 	}
 
 	public void setUser_rating(double user_rating) {
-		this.user_rating = user_rating;
+		this.userRating = user_rating;
 	}
 
 	@Override
 	public String toString() {
 		return "Title [id=" + id + ", name=" + name + ", date_added=" + date_added + ", release_year=" + release_year
 				+ ", rating=" + rating + ", duration=" + duration + ", description=" + description + ", user_rating="
-				+ user_rating + ", actorId=" + actor + ", directorId=" + director + ", categoryId=" + category
+				+ userRating + ", actorId=" + actor + ", directorId=" + director + ", categoryId=" + category
 				+ "]";
 	}
 	
