@@ -26,7 +26,7 @@ public class TitleService {
     }
     public Title getTitleById(int id)
     {
-        return titleRepository.findById(id).orElse(null);
+        return titleRepository.findById(id);
     }
 
     public Title save(Title newTitle)

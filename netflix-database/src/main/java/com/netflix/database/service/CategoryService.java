@@ -30,7 +30,7 @@ public class CategoryService {
     }
     public Category getCategoryById(int id)
     {
-        return categoryRepository.findById(id).orElse(null);
+        return categoryRepository.findById(id);
     }
 
     public Category save(Category newCategory)

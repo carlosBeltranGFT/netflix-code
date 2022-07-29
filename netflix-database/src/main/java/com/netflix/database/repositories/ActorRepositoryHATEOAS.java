@@ -12,4 +12,5 @@ import com.netflix.database.entities.Actor;
 public interface ActorRepositoryHATEOAS extends JpaRepository<Actor, Integer>{
 	List<Actor> findByName(@Param("name") String name);
 	Actor findById(@Param("id") int id);
+	Actor deleteById(@Param("id") int id);
 }

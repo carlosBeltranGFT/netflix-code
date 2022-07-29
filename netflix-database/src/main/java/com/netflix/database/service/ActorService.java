@@ -30,9 +30,10 @@ public class ActorService {
     {
         return actorRepository.findAll();
     }
+    
     public Actor getActorById(int id)
     {
-        return actorRepository.findById(id).orElse(null);
+        return actorRepository.findById(id);
     }
 
     public Actor save(Actor newActor)
