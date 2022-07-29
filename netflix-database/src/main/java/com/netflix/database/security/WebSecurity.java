@@ -1,4 +1,4 @@
-package com.netflix.database;
+package com.netflix.database.security;
 
 
 import org.springframework.context.annotation.Bean;

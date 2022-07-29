@@ -21,8 +21,6 @@ public class Director{
 	@NotEmpty
     private String name;
 	
-	@ManyToMany
-	Set<Title> titleId;
     
     public Director() {
 		super();

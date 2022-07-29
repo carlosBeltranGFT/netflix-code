@@ -23,10 +23,6 @@ public class Category {
 	@Column(unique=true)
 	private String name;
 	
-	@ManyToMany
-	Set<Title> titleId;
-	
-	
 	
 	public Category() {
 		super();
@@ -36,17 +32,6 @@ public class Category {
 		super();
 		this.name = name;
 	}
-
-	public Set<Title> getTitleId() {
-		return titleId;
-	}
-
-
-
-	public void setTitleId(Set<Title> titleId) {
-		this.titleId = titleId;
-	}
-
 
 
 	public Integer getId() {

@@ -24,8 +24,6 @@ public class Actor{
 	@NaturalId
     private String name;
     
-	@ManyToMany
-	Set<Title> titleId;
 	
     public Actor() {
 		super();
@@ -38,17 +36,6 @@ public class Actor{
 		this.name = name;
 	}
 
-
-
-	public Set<Title> getTitleId() {
-		return titleId;
-	}
-
-
-
-	public void setTitleId(Set<Title> titleId) {
-		this.titleId = titleId;
-	}
 
 
 
@@ -73,10 +60,6 @@ public class Actor{
     }
 
     
-	@Override
-	public String toString() {
-		return "Actor [id=" + id + ", name=" + name + ", titleId=" + titleId + "]";
-	}
-    
+
     
 }
