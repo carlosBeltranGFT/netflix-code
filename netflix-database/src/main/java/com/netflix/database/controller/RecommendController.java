@@ -1,42 +1,26 @@
 package com.netflix.database.controller;
 
+import java.util.List;
 
-
-import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.repository.query.Param;
-import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.netflix.database.repositories.TitlePageableRepository;
 import com.netflix.database.entities.Category;
 import com.netflix.database.entities.Title;
+import com.netflix.database.repositories.TitlePageableRepository;
 import com.netflix.database.service.CategoryService;
 import com.netflix.database.service.TitleService;
 
-import java.awt.print.Pageable;
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-
-
-import org.springframework.web.bind.annotation.PathVariable;
-
-
-import javax.websocket.server.PathParam;
-import java.util.List;
-
-
 @RestController
-@RequestMapping("/api/recommend")
+@RequestMapping(value="api/recommend")
 public class RecommendController {
-
 	@Autowired
 	private TitleService titleService;
 	
@@ -69,6 +53,5 @@ public class RecommendController {
 		return ResponseEntity.ok(titulos);
 
 	}
-
-
+	
 }

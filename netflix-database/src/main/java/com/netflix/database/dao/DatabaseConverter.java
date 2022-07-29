@@ -29,7 +29,6 @@ public class DatabaseConverter implements CommandLineRunner {
 
 	@Autowired
 	NetflixRepository netflixRepository;
-
 	@Autowired
 	ActorRepository actorRepository;
 	
@@ -38,7 +37,6 @@ public class DatabaseConverter implements CommandLineRunner {
 	
 	@Autowired
 	CategoryRepository categoryRepository;
-	
 	@Autowired
 	TitleRepository titleRepository;
 
@@ -76,7 +74,7 @@ public class DatabaseConverter implements CommandLineRunner {
 		return actores;
 	}
 	
-	public Set<Director> RecuperarDirectores(NetflixTitles title) {
+public Set<Director> RecuperarDirectores(NetflixTitles title) {
 
 		List<String> directorString = Arrays.asList(title.getDirector().split(","));
 		Set<Director> directores = new HashSet<Director>();
@@ -121,19 +119,19 @@ public class DatabaseConverter implements CommandLineRunner {
 		
 		return categories;
 	}
-	
-	public void RegistrarTitulo(NetflixTitles raw) throws SQLException {
 
-		Set<Actor> actores = RecuperarActores(raw).stream().collect(Collectors.toSet());
-		Set<Director> directores = RecuperarDirectores(raw).stream().collect(Collectors.toSet());
-		Set<Category> categories = RecuperarCategorias(raw).stream().collect(Collectors.toSet());
-		
-		
-		Title title = new Title(raw.getShow_id(), raw.getTitle(), raw.getDate_added(), raw.getRelease_year(), raw.getRating(), raw.getDuration(),
-				raw.getDescription(), raw.getUser_rating(), actores, directores, categories);
-		
-		titleRepository.save(title);
-		
+	public void RegistrarTitulo(NetflixTitles raw) throws SQLException {
+		if(titleRepository.findById(raw.getShow_id())==null) {		
+			Set<Actor> actores = RecuperarActores(raw).stream().collect(Collectors.toSet());
+			Set<Director> directores = RecuperarDirectores(raw).stream().collect(Collectors.toSet());
+			Set<Category> categories = RecuperarCategorias(raw).stream().collect(Collectors.toSet());
+			
+			
+			Title title = new Title(raw.getShow_id(), raw.getTitle(), raw.getDate_added(), raw.getRelease_year(), raw.getRating(), raw.getDuration(),
+					raw.getDescription(), raw.getUser_rating(), actores, directores, categories);
+			
+			titleRepository.save(title);
+		}
 		
 		
 	}

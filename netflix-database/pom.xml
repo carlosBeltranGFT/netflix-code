@@ -96,9 +96,7 @@
 			<artifactId>simpleclient_common</artifactId>
 			<version>0.16.0</version>
 		</dependency>
-		
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>

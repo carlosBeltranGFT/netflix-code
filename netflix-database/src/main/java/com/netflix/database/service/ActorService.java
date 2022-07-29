@@ -1,62 +1,25 @@
 package com.netflix.database.service;
 
-
-import java.util.List;
-
-import javax.persistence.Entity;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.netflix.database.entities.Actor;
-import com.netflix.database.entities.Category;
-import com.netflix.database.entities.Director;
-import com.netflix.database.entities.Title;
 import com.netflix.database.repositories.ActorRepository;
-import com.netflix.database.repositories.CategoryRepository;
-import com.netflix.database.repositories.DirectorRepository;
-import com.netflix.database.repositories.TitleRepository;
-
 
 @Service
 public class ActorService {
-	
-	@Autowired
-	private ActorRepository actorRepository;
-	
-	
+    @Autowired
+    ActorRepository actorRepository;
 
-    public List<Actor> getAll()
-    {
-        return actorRepository.findAll();
-    }
-    
-    public Actor getActorById(int id)
-    {
-        return actorRepository.findById(id);
+    public Actor findById(int id){
+        return actorRepository.findById(id).get();
     }
 
-    public Actor save(Actor newActor)
-    {
-
-        return actorRepository.save(newActor);
+    public Actor createActor(Actor actor){
+       return actorRepository.save(actor);
     }
 
-    public Actor update(Actor ActorUpdate)
-    {
-        return actorRepository.save(ActorUpdate);
+    public void deleteActor(int id){
+        actorRepository.deleteById(id);
     }
-
-    public Actor delete(Actor ActorDelete)
-    {
-    	actorRepository.delete(ActorDelete);
-        return ActorDelete;
-    }
-
-    public void deleteById(int Id)
-    {
-    	actorRepository.deleteById(Id);
-
-    }
-	
 }
