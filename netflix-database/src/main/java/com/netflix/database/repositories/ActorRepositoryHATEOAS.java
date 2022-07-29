@@ -8,7 +8,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.netflix.database.entities.Actor;
 
-
-public interface ActorRepository extends JpaRepository<Actor, Integer>{
-	Actor findByName(String name); 
+@RepositoryRestResource(collectionResourceRel = "actor", path = "actors")
+public interface ActorRepositoryHATEOAS extends JpaRepository<Actor, Integer>{
+	List<Actor> findByName(@Param("name") String name); 
 }
